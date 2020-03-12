@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import logo from '../images/logo.svg';
 import {FaAlignRight} from 'react-icons/fa';
 import {Link} from 'react-router-dom';
+import '../App.css';
+import {IconContext} from "react-icons";
 
 class Navbar extends Component{
     constructor(props){
@@ -25,7 +27,22 @@ class Navbar extends Component{
                         <Link to="/">
                             <img src={logo} alt="Beach Resort" />
                         </Link>
+                        <button type="button"  onClick={this.handleToggle}>
+                            <IconContext.Provider
+                                value={{ color: 'blue', size: '50px' }}
+                            >
+                                <FaAlignRight className="nav-icon" />
+                            </IconContext.Provider>    
+                        </button>
                     </div>
+                    <ul className={this.state.isOpen? "nav-links show-nav" : "nav-links"}>
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/rooms">Rooms</Link>
+                        </li>
+                    </ul>
                 </div>
             </nav>
         )
